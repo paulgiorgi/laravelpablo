@@ -1,0 +1,19 @@
+{
+    "name": "paulgiorgi/laravelpablo",
+    "description": "Helpers that helps me",
+    "type": "Library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Giorgi",
+            "email": "paulgiorgimusic@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Paulgiorgi\\Laravelpablo\\": "src/"
+        }
+    }
+}
