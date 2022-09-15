@@ -3,6 +3,7 @@
 namespace Paulgiorgi\Laravelpablo;
 
 use Illuminate\Support\ServiceProvider;
+use Paulgiorgi\Laravelpablo\commands\ConvertScssToCss;
 use Paulgiorgi\Laravelpablo\commands\MakeResources;
 use Paulgiorgi\Laravelpablo\commands\ProjectInit;
 
@@ -19,6 +20,7 @@ class PabloServiceProvider extends ServiceProvider{
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+                ConvertScssToCss::class,
                 MakeResources::class,
                 ProjectInit::class,
             ]);

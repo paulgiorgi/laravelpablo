@@ -2,6 +2,7 @@
 
 namespace Paulgiorgi\Laravelpablo\commands;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Console\Command;
 use Str;
 
@@ -12,7 +13,9 @@ class MakeResources extends Command
      *
      * @var string
      */
-    protected $signature = 'laravelpablo:resources {model}';
+    protected $signature = 'laravelpablo:resources
+        {--model=Modelname : define model\'s name}
+        {--option2: controller , model-view , model , all }';
 
     /**
      * The console command description.
@@ -28,19 +31,23 @@ class MakeResources extends Command
      */
     public function handle()
     {
-        $model = $this->argument('model');
+        $model = $this->option['model'];
         $plural = Str::plural(strtolower($model));
-        $views_path = base_path(self::normalizePath('resources/views/'.$plural));
-        $blade_index_path = base_path(self::normalizePath('resources/views/'.$plural.'/index.blade.php'));
-        $blade_form_path = base_path(self::normalizePath('resources/views/'.$plural.'/_form.blade.php'));
-        $js_folder_path = base_path(self::normalizePath('public/js/views'));
-        $js_file_path = base_path(self::normalizePath('public/js/views/'.$plural.'.js'));
-        $controller_file_path = base_path(self::normalizePath('app/Http/Controllers/'.$model.'Controller.php'));
+
+        $views_path = resource_path('/views/'.$plural);
+        $blade_index_path = $views_path.'/index.blade.php';
+        $blade_form_path = $views_path.'/_form.blade.php';
+        $js_folder_path = public_path('/js/views');
+        $js_file_path = $js_folder_path.$plural.'.js';
+        $controller_file_path = app_path('/Http/Controllers/'.$model.'Controller.php');
 
         //add edit section for fast-edit to Model
-        if(file_exists($model)){
+
+
+        // if(!(File::exists($model))){
             self::makeCoolerModel($model);
-        }
+                die();
+        // }
 
         //check if blade **folder** exists
         if(!file_exists($views_path)){
@@ -77,8 +84,14 @@ class MakeResources extends Command
     }
 
     private static function makeCoolerModel($model){
+        //remove last } from Model.php in App\Models\
+        File::put(app_path('/Models/'.$model.'.php'),str_replace("}", "", File::get(app_path('/Models/'.$model.'.php'))));
 
-        file_put_contents($file, $html, FILE_APPEND);
+        //attach the cool custom appendix for model
+        $cool = File::get(__DIR__ . '/../default/Model.php');
+
+        //appending the coolness to the shortened model
+        file_put_contents(app_path('/models/'.$model.'.php'), $cool, FILE_APPEND);
     }
 
     private static function createBladeIndex($folder){

@@ -1,0 +1,34 @@
+for model's form.
+
+dobbiamo definire della macrocategorie:
+-direct
+-select
+    -standard
+    -w/ fast add
+    -select2
+-attachments
+    -profile_pic
+    -imgs
+    -docs
+-custom_fields
+
+-direct (quando è un input liscio)
+-select (quando dobbiamo implementare un select e quindi diverse options)
+-select_w/_fast_add,
+-select2 with editable tags,
+-profile_pic (quando c'è una sola immagine da allegare e dobbiamo mostrarla al di sotto del pezzino di form).
+-allegati_immagini (mostriamo sotto un carosello piccolino con le immagini multiple caricate)
+-allegati_docs (mostriamo sotto in verticale i link href + il tasto delete sull'hover)
+-un fast_create quando abbiamo la necessità (ad esempio affianco ad una select) di creare al volo un campo.
+-field customizzati(dove scriviamo direttamente il blocco in blade e lo implementiamo dal modello mettendo un riferimento per l'include. questo è utile nel caso in cui abbiamo ad esempio una pivot di mezzo e dobbiamo fare alcuni salvataggi, mi viene da pensare agli article dentro tiesse).
+
+**gli allegati, possiamo direttamente mettere un filtro quando decidiamo il tipo di file accettato. (se il file accettato è di tipo immagine, e c'è un multiple, mostriamo un carosello di immagini, quando è di tipo all e c'è un multiple mostriamo gli allegati verticalmente).
+
+
+-immagini o degli allegati (quindi il type=file), possiamo decidere se sono immagini(profile_pic o allegati_img) oppure documenti (quindi di ogni tipo).
+-quando
+
+
+************************************************
+
+

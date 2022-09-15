@@ -16,4 +16,8 @@
             "Paulgiorgi\\Laravelpablo\\": "src/"
         }
     }
+    "require":{
+        "laravel/breeze" : "*",
+        "guzzlehttp/guzzle" : "*",
+    }
 }

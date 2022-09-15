@@ -36,7 +36,7 @@ class ProjectInit extends Command
 
         if($option['public'] || $option['all']){
             self::makePublic();
-            $this->info('Aaaal right ;-)');
+            $this->info('Aaaal right, public ;-)');
         }
 
         if($option['helpers'] || $option['all']){
@@ -46,13 +46,23 @@ class ProjectInit extends Command
 
         if($option['layouts'] || $option['all']){
             self::makeLayouts();
-            $this->info('Aaaal right ;-)');
+            $this->info('Aaaal right, just layouts ;-)');
+        }
+
+        if($option['provider'] || $option['all']){
+            self::makeProvider();
+            $this->info('Okok, AppServiceProvider boosted with goodness :D');
         }
 
         if($option['all']){
             $this->info('Aaaal right. Remember to add new helpers to your composer and then run dump-autoload ;-)');
         }
 
+    }
+
+    public function makeProvider()
+    {
+        File::copyDirectory(__DIR__ . '/../providers',app_path('/Providers'));
     }
 
     public function makePublic()
