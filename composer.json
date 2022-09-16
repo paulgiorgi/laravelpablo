@@ -18,5 +18,6 @@
     }
     "require":{
         "laravel/breeze" : "*",
+        "guzzlehttp/guzzle" : "*",
     }
 }
