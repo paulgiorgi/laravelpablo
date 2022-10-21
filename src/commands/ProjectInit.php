@@ -16,6 +16,7 @@ class ProjectInit extends Command
         {--public : Install js css and fonts}
         {--helpers : Install helpers like cache_bs}
         {--layouts : Install and overwrite app and guest.blade.php}
+        {--provider : Install only the macro functions like whereLike}
         {--all : Run all}';
 
     /**
@@ -36,17 +37,17 @@ class ProjectInit extends Command
 
         if($option['public'] || $option['all']){
             self::makePublic();
-            $this->info('Aaaal right, public ;-)');
+            $this->info('Public folder stuff yo.');
         }
 
         if($option['helpers'] || $option['all']){
             self::makeHelpers();
-            $this->info('Aaaal right. Remember to add new helpers to your composer and then run dump-autoload ;-)');
+            $this->info('Helpers, remember to add their dependencies onto your composer and run a dump-autoload.');
         }
 
         if($option['layouts'] || $option['all']){
             self::makeLayouts();
-            $this->info('Aaaal right, just layouts ;-)');
+            $this->info('Layouts.');
         }
 
         if($option['provider'] || $option['all']){
@@ -55,7 +56,7 @@ class ProjectInit extends Command
         }
 
         if($option['all']){
-            $this->info('Aaaal right. Remember to add new helpers to your composer and then run dump-autoload ;-)');
+            $this->info('ALL MEANS: Big power -> big responsabilities');
         }
 
     }
