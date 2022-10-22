@@ -35,6 +35,16 @@ class ProjectInit extends Command
     {
         $option = $this->option();
 
+        if($option['help'] || empty($option)){
+            $this->info('
+            {--public : Install js css and fonts}
+            {--helpers : Install helpers like cache_bs}
+            {--layouts : Install and overwrite app and guest.blade.php}
+            {--provider : Install only the macro functions like whereLike}
+            {--all : Run all}
+            ');
+        }
+
         if($option['public'] || $option['all']){
             self::makePublic();
             $this->info('Public folder stuff yo.');

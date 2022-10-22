@@ -14,8 +14,7 @@ class MakeResources extends Command
      * @var string
      */
     protected $signature = 'laravelpablo:resources
-        {--model=Modelname : define model\'s name}
-        {--option2: controller , model-view , model , all }';
+        {--model=Modelname : define model\'s name}';
 
     /**
      * The console command description.
@@ -31,7 +30,7 @@ class MakeResources extends Command
      */
     public function handle()
     {
-        $model = $this->option['model'];
+        $model = $this->option('model');
         $plural = Str::plural(strtolower($model));
 
         $views_path = resource_path('/views/'.$plural);
@@ -44,10 +43,10 @@ class MakeResources extends Command
         //add edit section for fast-edit to Model
 
 
-        // if(!(File::exists($model))){
+        if(!(File::exists($model))){
             self::makeCoolerModel($model);
-                die();
-        // }
+            // die();
+        }
 
         //check if blade **folder** exists
         if(!file_exists($views_path)){
@@ -66,7 +65,7 @@ class MakeResources extends Command
 
         //check if js folder exists
         if(!file_exists($js_folder_path)){
-            mkdir(self::normalizePath(__DIR__ . '/../../../public/js/views'));
+            mkdir(self::normalizePath(__DIR__ . '/../../../public/js/views',0777,true));
         }
 
         //check if js **file** exists

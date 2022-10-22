@@ -1,17 +1,11 @@
 <?php
 
-/**
- *
- * Use cmd+f to replace 'Model__' with the correct model's name.
- *
- */
-
 namespace App\Http\Controllers;
 
-use App\Models\.$Model__;
+use App\Models\Model__;
 use Illuminate\Http\Request;
 
-class $Model__.Controller extends Controller
+class Model__Controller extends Controller
 {
 
     public $model_class = Model__::class;
