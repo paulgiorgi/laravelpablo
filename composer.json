@@ -15,7 +15,7 @@
         "psr-4": {
             "Paulgiorgi\\Laravelpablo\\": "src/"
         }
-    }
+    },
     "require":{
         "laravel/breeze" : "*",
         "guzzlehttp/guzzle" : "*",
