@@ -1,7 +1,7 @@
 Laravel Pablo has been created to speed up MY workflow.
 So it can do it for you too.
 
-1-- /***************** INIT **********************/
+1-- /******************* INIT **********************/
 
 Once you composer required it
 you can use
@@ -15,7 +15,7 @@ php artisan laravelpablo:init --help
 
 for informations.
 
-2-- /***************** RESOURCES **********************/
+2-- /***************** RESOURCES ********************/
 
 Once you created your php artisan make:model User -crm
 
